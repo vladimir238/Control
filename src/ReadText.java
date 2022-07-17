@@ -17,7 +17,6 @@ public class ReadText {
 
             String txt = scan.nextLine();
             String[] res = txt.split(" ");
-            //    System.out.println("Строка " + res[0]);
 
             if (res[5].equals("менеджер")) {
                 sc.add(new MenegerWorker(Integer.valueOf(res[0]), res[1], res[2], reverceDate(res[3]), reverceDate(res[4]), res[5]));
@@ -66,6 +65,15 @@ public class ReadText {
 
         }
         writer.close();
+    }
+    public  void addNewWorker() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введите любое  ");
+        String text = in.nextLine();
+
+        System.out.println("Вы ввели строку %d \n" + text);
+        in.close();
+
     }
 
 
