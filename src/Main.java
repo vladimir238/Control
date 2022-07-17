@@ -13,7 +13,6 @@ public class Main {
         br = new BufferedReader(new InputStreamReader(System.in));
         ReadText readtext = new ReadText();
         arrWork = readtext.readText("src/file1.txt");
-        //    OtherWorker otherWorker = null;
         printNavigation();
         try {
             command(br.readLine());
@@ -24,8 +23,6 @@ public class Main {
 
 
     private static void command(String string) throws IOException, ParseException {
-//        ReadText readtext = new ReadText();
-//        arrWork = readtext.readText("src/file1.txt");
 
 
         //Варианты для команд
@@ -39,19 +36,20 @@ public class Main {
             }
             break;
             case "2": {
-                System.out.println("Сотрудник удален");
+                dellWorker();
                 printNavigation();
                 command(br.readLine());
             }
             break;
             case "3": {
-                System.out.println("Профессия сотрудника изменена");
+                changyStatus();
+               // System.out.println("Профессия сотрудника изменена");
                 printNavigation();
                 command(br.readLine());
             }
             break;
             case "4": {
-                System.out.println("Сотрудник привязан к менеджеру");
+                changyMeneger();
                 printNavigation();
                 command(br.readLine());
             }
@@ -121,11 +119,69 @@ public class Main {
             arrWork.add(new OtherWorker(Integer.valueOf(res[0]), res[1], res[2], readText.reverceDate(res[3]), readText.reverceDate(res[4]), res[5], res[6]));
         }
 
-        printCollection();
-
 
     }
 
+    public static void dellWorker() throws IOException {
+        System.out.println("Введите имя сотрудника : ");
+        String name = br.readLine();
+        System.out.println("Введите фамилию сотрудника : ");
+        String lastname = br.readLine();
+        Iterator<Worker> workerIterator = arrWork.iterator();
+        while (workerIterator.hasNext()) {
+            Worker nextWorker = workerIterator.next();
+            if (name.equals(nextWorker.getName()) && lastname.equals(nextWorker.getLast_name())) {
+                workerIterator.remove();
+                System.out.println("Сотрудник удален из базы");
+
+            }
+
+        }
+
+    }
+
+    public static void changyStatus() throws IOException {
+        System.out.println("Введите имя сотрудника : ");
+        String name = br.readLine();
+        System.out.println("Введите фамилию сотрудника : ");
+        String lastname = br.readLine();
+        Iterator<Worker> workerIterator = arrWork.iterator();
+        int i=0;
+        while (workerIterator.hasNext()) {
+            Worker nextWorker = workerIterator.next();
+
+            if (name.equals(nextWorker.getName()) && lastname.equals(nextWorker.getLast_name())&& (nextWorker instanceof OtherWorker)) {
+                i++;
+                System.out.println("Введите новую должность сотрудника");
+                String newstatus=br.readLine();
+                ((OtherWorker) nextWorker).setDescription(newstatus);
+                System.out.println("Профессия сотрудника изменена");
+
+            }
+        }
+        if (i==0) System.out.println("Сотрудник не найден ");
+    }
+    public static void changyMeneger() throws IOException {
+        System.out.println("Введите имя сотрудника : ");
+        String name = br.readLine();
+        System.out.println("Введите фамилию сотрудника : ");
+        String lastname = br.readLine();
+        Iterator<Worker> workerIterator = arrWork.iterator();
+        int i=0;
+        while (workerIterator.hasNext()) {
+            Worker nextWorker = workerIterator.next();
+
+            if (name.equals(nextWorker.getName()) && lastname.equals(nextWorker.getLast_name())&& (nextWorker instanceof OtherWorker)) {
+                i++;
+                System.out.println("Введите другого Менеджера ");
+                String menedger=br.readLine();
+                ((OtherWorker) nextWorker).setManager(menedger);
+                System.out.println("Менеджер сотрудника изменен");
+
+            }
+        }
+        if (i==0) System.out.println("Сотрудник не найден ");
+    }
 }
 
 
