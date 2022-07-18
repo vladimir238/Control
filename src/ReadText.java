@@ -66,15 +66,7 @@ public class ReadText {
         }
         writer.close();
     }
-    public  void addNewWorker() {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите любое  ");
-        String text = in.nextLine();
 
-        System.out.println("Вы ввели строку %d \n" + text);
-        in.close();
-
-    }
 
 
 }

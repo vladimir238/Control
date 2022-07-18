@@ -6,7 +6,6 @@ import java.util.*;
 
 public class Main {
     private static BufferedReader br;
-    //private static BufferedReader fr;
     private static List<Worker> arrWork;
 
     public static void main(String[] args) throws IOException, ParseException {
@@ -14,6 +13,7 @@ public class Main {
         ReadText readtext = new ReadText();
         arrWork = readtext.readText("src/file1.txt");
         printNavigation();
+
         try {
             command(br.readLine());
         } catch (IOException e) {
@@ -70,6 +70,8 @@ public class Main {
             }
             break;
             case "7": {
+                ReadText readtext = new ReadText();
+                readtext.writeText(arrWork);
                 System.exit(1);
             }
             break;
