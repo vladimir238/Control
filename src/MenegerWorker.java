@@ -1,9 +1,6 @@
-import java.text.NumberFormat;
 import java.util.Date;
-import java.util.Locale;
 
 class MenegerWorker extends Worker {
-    //   static final double WORKING_HOURS_IN_MONTH = 8.0 * 20.8;
 
     String status;
 

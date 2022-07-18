@@ -25,7 +25,6 @@ public class Main {
     private static void command(String string) throws IOException, ParseException {
 
 
-        //Варианты для команд
         switch (string) {
             case "1": {
                 addNewWorker();
@@ -43,7 +42,6 @@ public class Main {
             break;
             case "3": {
                 changyStatus();
-               // System.out.println("Профессия сотрудника изменена");
                 printNavigation();
                 command(br.readLine());
             }

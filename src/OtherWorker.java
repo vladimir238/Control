@@ -1,6 +1,4 @@
-import java.text.NumberFormat;
 import java.util.Date;
-import java.util.Locale;
 
 class OtherWorker extends Worker {
     String description,manager;
