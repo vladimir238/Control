@@ -1,13 +1,14 @@
+import java.time.LocalDate;
 import java.util.Date;
 
 abstract class Worker  {
     private int id;
     private String name;
     private String last_name;
-    private Date birthday;
-    private Date working_date;
+    private LocalDate birthday;
+    private LocalDate working_date;
 
-    Worker(int id, String name, String last_name, Date birthday, Date working_date) {
+    Worker(int id, String name, String last_name, LocalDate birthday, LocalDate working_date) {
         this.id = id;
         this.name = name;
         this.last_name = last_name;
@@ -20,12 +21,12 @@ abstract class Worker  {
         return last_name;
     }
 
-    Date getBirthday() {
+    LocalDate getBirthday() {
 
         return birthday;
     }
 
-    Date getWorking_date() {
+    LocalDate getWorking_date() {
         return working_date;
     }
 

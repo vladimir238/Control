@@ -92,6 +92,7 @@ public class Main {
     }
 
     public static void printCollection() {
+
         for (Worker w : arrWork) {
             System.out.println(w);
         }

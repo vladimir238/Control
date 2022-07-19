@@ -1,17 +1,16 @@
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class ReadText {
     OtherWorker otherWorker;
 
-    public List<Worker> readText(String filename) throws IOException, ParseException {
+    public List<Worker> readText(String filename) throws IOException{
         FileReader fr = new FileReader(filename);
         Scanner scan = new Scanner(fr);
 
@@ -34,17 +33,18 @@ public class ReadText {
         return sc;
     }
 
-    public Date reverceDate(String date) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat();
-        format.applyPattern("dd.MM.yyyy");
-        Date docDate = format.parse(date);
+    public LocalDate reverceDate(String date)  {
+        DateTimeFormatter formatt = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        LocalDate docDate = LocalDate.parse(date, formatt);
 
         return docDate;
     }
 
-    public String unreverceDate(Date newDate) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        return simpleDateFormat.format(newDate);
+    public String unreverceDate(LocalDate newDate) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+        return newDate.format(formatter);
     }
 
     public void writeText(List<Worker> work) throws IOException {
